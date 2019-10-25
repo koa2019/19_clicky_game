@@ -1,11 +1,15 @@
 
 .nav a {
     color: white;
-  }
+    font-weight: 500;
+    margin-top: 2%;
+}
   
-  .nav {
-    min-height: 6vh;
+.nav {
+    min-height: 10vh;
     background-color:goldenrod;
     font-size: calc(15px + 2vmin);
     font-weight: 450;
-  }
+    background-image: url('./background.jpg');
+
+}

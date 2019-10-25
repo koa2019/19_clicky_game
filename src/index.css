@@ -5,12 +5,11 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url('./images/super-mario-level-wallpaper-1680-x-1050.jpg');
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-body {
-  background-image: url('./images/super-mario-level-wallpaper-1680-x-1050.jpg');
-}
+

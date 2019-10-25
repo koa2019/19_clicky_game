@@ -1,10 +1,9 @@
 .jumbotron {
     background-color: rgb(49, 49, 48);    
-    /* background-image: url('../../images/background.jpg'); */
 }
 
 header {
-    min-height: 20vh;
+    min-height: 15vh;
     display: flex;
     flex-direction: column;
     align-items: center;
