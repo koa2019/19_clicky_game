@@ -4,7 +4,8 @@ import Nav from './components/Nav/Nav';
 import Header from './components/Header/Header';
 import CardContainer from './components/CardContainer/CardContainer';
 
-function App() {
+// function App() {
+const App = () => {
   return (
     <div>
       <Nav />
