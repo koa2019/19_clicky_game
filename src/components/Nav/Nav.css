@@ -1,0 +1,11 @@
+
+.nav a {
+    color: white;
+  }
+  
+  .nav {
+    min-height: 6vh;
+    background-color:goldenrod;
+    font-size: calc(15px + 2vmin);
+    font-weight: 450;
+  }
