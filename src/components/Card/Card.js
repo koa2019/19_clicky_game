@@ -1,31 +1,25 @@
 import React, { Component } from "react";
 import "./style.css";
 import Character from '../Character';
-// import Img from './marioBrothers7';
-// import img from '../../../public/images/marioBrothers7.png';
+import Background from './marioBrothers7.png';
+
 
 class Card extends Component {
 
 
     state = {
-        characters: {},
-        selectedChar: {},
+        isWinner: false,
+        characters: [1,2,3,4,5,6,7,8,9],
+        selectedChar: [],
         alreadySelected: false,
         currentScore: 0,
         topScore: 9,
         points: 1,
-        img: 'https://img.pngio.com/yoshi-vector-transparent-background-image-free-stock-yoshi-super-yoshi-transparent-820_1314.png'
+        image2: 'https://img.pngio.com/yoshi-vector-transparent-background-image-free-stock-yoshi-super-yoshi-transparent-820_1314.png'
     };
 
 
-    // When this component mounts, pass loading boolean
-    componentDidMount() {
-        this.loadStuff();
-    }
 
-    loadStuff = props => {
-
-    };
 
     getRandomPoints = () => {
         const num = Math.floor(Math.random() * 10) + 1;
@@ -35,13 +29,17 @@ class Card extends Component {
         });
     }
 
+    renderCards = () => {
+
+    }
     handleCardClick = event => {
         // Get the data-value of the clicked card
         const cardVal = event.target.attributes.value;
-        console.log(cardVal)
+        // console.log(cardVal)
         const newState = { ...this.state };
 
         newState.currentScore += this.state.points;
+
 
         this.setState(newState);
         // load new random points value to card
@@ -49,23 +47,29 @@ class Card extends Component {
     }
 
 
-    render() {
+    render(props) {
         return (
             <div className='card-deck'>
 
-                {/* map each imgArray and display one card with one img in card */}
-                {/* {props.results.map(result => ( */}
+               
+                {/* {this.state.characters.map()} */}
 
                 <div className="card"
-                    name='points'
+                    // style={{
+                        // backgroundImage: `url(${Background})`
+                        // backgroundImage: props.image ? `url(${Background})` : "none"
+                    // }}
+                    // data-id=''
                     value={this.state.points}
                     onClick={this.handleCardClick}
-                > 
-                <p>Current Score: {this.state.currentScore}</p>
-                <p>Card Value: {this.state.points}</p>
+                >
+                     <img src= {Background} />
+                    <p>Current Score: {this.state.currentScore}</p>
+                    <p>Card Value: {this.state.points}</p>
+                   
                     {/* <div className="card-body"> {props.children} </div> */}
                 </div>
-                {/* ))} */}
+             
 
             </div>
         );
