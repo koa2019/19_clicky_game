@@ -7,55 +7,61 @@ import Card from '../Card/Card';
 import "./style.css";
 
 class CardContainer extends Component {
-    state = {
-        characters: {},
-        selectedChar: {},
-        currentScore: 0,
-        topScore: 9,
-        points: 1,
-        img: 'https://img.pngio.com/yoshi-vector-transparent-background-image-free-stock-yoshi-super-yoshi-transparent-820_1314.png'
-    };
+    // state = {
+    //     characters: {},
+    //     selectedChar: {},
+    //     alreadySelected: false,
+    //     currentScore: 0,
+    //     topScore: 9,
+    //     points: 1,
+    //     img: 'https://img.pngio.com/yoshi-vector-transparent-background-image-free-stock-yoshi-super-yoshi-transparent-820_1314.png'
+    // };
 
 
-    // When this component mounts, pass loading boolean
-    componentDidMount() {
-        this.loadStuff();
-    }
+    // // When this component mounts, pass loading boolean
+    // componentDidMount() {
+    //     this.loadStuff();
+    // }
 
-    loadStuff = props => {
+    // loadStuff = props => {
+    //     // data-value={Math.floor(Math.random() * 10) + 1}
 
-    };
+    // };
 
-    handleCardClick = event => {
-        // Get the data-value of the clicked card
-        const cardVal = event.target.attributes.getNamedItem("value").value;
-        // Clone this.state to the newState object
-        // We'll modify this object and use it to set our component's state
-        const newState = { ...this.state };
+    // handleCardClick = event => {
 
-        // Set the state for the appropriate input field
-        // newState.setState({
-        //   points: cardVal
-        // });
-        newState.points = cardVal;
-        newState.currentScore = newState.points;
+    //     event.preventDefault();
 
-        // Replace our component's state with newState, load the next dog image
-        this.setState(newState);
-        this.loadStuff();
-    };
+    //     // Get the data-value of the clicked card
+    //     // const cardVal = event.target.attributes.getNamedItem("value").value;
+    //     const cardVal = event.target.attributes.value;
+    //     console.log(cardVal)
+
+    //     // Clone this.state to the newState object
+    //     // We'll modify this object and use it to set our component's state
+    //     // const newState = { ...this.state };
+    //     // Set the state for the appropriate input field
+    //         // newState.points = cardVal;
+    //         // newState.currentScore = newState.points;
 
 
-    render() {
+    //     // Replace our component's state with newState, load the next dog image
+    //     this.setState({value: cardVal});
+    //     console.log(this.state.value)
+    //     this.loadStuff();
+    // };
+
+
+    render(props) {
         return (
             <Container>
                 <Row>
-                    <div className="scores mx-auto">Card Points:{this.state.points} | Score:{this.state.currentScore} | Top Score: {this.state.topScore}</div>
-
-                </Row>
-                <Row>
                     <Col size="md-3">
-                        <Card image={this.state.image} points='3' handleCardClick={this.handleCardClick} />
+                        <Card />
+                        {/* <Card  */}
+                        {/* // image={props.state.image}  */}
+                        {/* points={Math.floor(Math.random() * 10) + 1}  */}
+                        {/* handleCardClick={props.handleCardClick} /> */}
                     </Col>
                 </Row>
             </Container>
