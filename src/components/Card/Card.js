@@ -1,83 +1,67 @@
 import React, { Component } from "react";
 import "./style.css";
-import Character from '../Character';
-import Background from './marioBrothers7.png';
 
+// class Card extends Component {
 
-class Card extends Component {
+// props = {
+//     isWinner: false,
+//     characters: [1, 2, 3, 4, 5, 6, 7, 8, 9],
+//     selectedChar: [],
+//     alreadySelected: false,
+//     currentScore: 0,
+//     topScore: 3,
+//     points: 1,
+// };
 
+// getRandomPoints = () => {
+//     const num = Math.floor(Math.random() * 10) + 1;
+//     console.log(num)
+//     setprops({
+//         points: num
+//     });
+// }
 
-    state = {
-        isWinner: false,
-        characters: [1,2,3,4,5,6,7,8,9],
-        selectedChar: [],
-        alreadySelected: false,
-        currentScore: 0,
-        topScore: 3,
-        points: 1,
-        image2: 'https://img.pngio.com/yoshi-vector-transparent-background-image-free-stock-yoshi-super-yoshi-transparent-820_1314.png'
-    };
+// renderCards = () => {
 
+// }
 
+// handleCardClick = event => {
+//     // Get the data-value of the clicked card
+//     const cardVal = event.target.attributes.value;
+//     // console.log(cardVal)
+//     const newprops = { ...props };
 
+//     newprops.currentScore += props.points;
 
-    getRandomPoints = () => {
-        const num = Math.floor(Math.random() * 10) + 1;
-        console.log(num)
-        this.setState({
-            points: num
-        });
-    }
+//     if(newprops.currentScore > newprops.topScore){
+//         newprops.topScore = newprops.currentScore
+//     }
 
-    renderCards = () => {
+//     setprops(newprops);
+//     // load new random points value to card
+//     getRandomPoints();
+// }
 
-    }
-    handleCardClick = event => {
-        // Get the data-value of the clicked card
-        const cardVal = event.target.attributes.value;
-        // console.log(cardVal)
-        const newState = { ...this.state };
+// render(props) {
+function Card(props) {
 
-        newState.currentScore += this.state.points;
+    return (
+        <div className='card-deck'>
 
-        if(newState.currentScore > newState.topScore){
-            newState.topScore = newState.currentScore
-        }
+            <div className="card"
+                value={props.points}
+                onClick={props.handleCardClick}
 
-        this.setState(newState);
-        // load new random points value to card
-        this.getRandomPoints();
-    }
+            // value={props.points}
 
-
-    render() {
-        return (
-            <div className='card-deck'>
-
-               
-                {/* {this.state.characters.map()} */}
-
-                <div className="card"
-                    // style={{
-                        // backgroundImage: `url(${Background})`
-                        // backgroundImage: props.image ? `url(${Background})` : "none"
-                    // }}
-                    // data-id=''
-                    value={this.state.points}
-                    onClick={this.handleCardClick}
-                >
-                     <img src= {this.props.characterImage.image} />
-                    <p>Current Score: {this.state.currentScore}</p>
-                    <p>Card Value: {this.state.points}</p>
-                    <p>Total Score: {this.state.topScore}</p>
-                   
-                    {/* <div className="card-body"> {props.children} </div> */}
-                </div>
-             
-
+            >
+                <img src={props.characterImage} />
+                <p>Current Score: {props.currentScore}</p>
+                <p>Card Value: {props.points}</p>
+                <p>Total Score: {props.topScore}</p>
             </div>
-        );
-    }
+        </div>
+    );
 }
 
 export default Card;
