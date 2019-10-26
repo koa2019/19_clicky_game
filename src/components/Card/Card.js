@@ -13,7 +13,7 @@ class Card extends Component {
         selectedChar: [],
         alreadySelected: false,
         currentScore: 0,
-        topScore: 9,
+        topScore: 3,
         points: 1,
         image2: 'https://img.pngio.com/yoshi-vector-transparent-background-image-free-stock-yoshi-super-yoshi-transparent-820_1314.png'
     };
@@ -40,6 +40,9 @@ class Card extends Component {
 
         newState.currentScore += this.state.points;
 
+        if(newState.currentScore > newState.topScore){
+            newState.topScore = newState.currentScore
+        }
 
         this.setState(newState);
         // load new random points value to card
@@ -66,6 +69,7 @@ class Card extends Component {
                      <img src= {Background} />
                     <p>Current Score: {this.state.currentScore}</p>
                     <p>Card Value: {this.state.points}</p>
+                    <p>Total Score: {this.state.topScore}</p>
                    
                     {/* <div className="card-body"> {props.children} </div> */}
                 </div>
