@@ -3,25 +3,17 @@ import Container from "../Container";
 import Row from '../Row';
 import Col from "../Col";
 import Card from '../Card/Card';
-import Images from '../../images/marioBrothers7.png';
+import Images from '../../components/images.json';
 // import Character from '../Character';
 import "./style.css";
 
 class CardContainer extends Component {
-  
+
     state = {
-        image: 'https://img.pngio.com/yoshi-vector-transparent-background-image-free-stock-yoshi-super-yoshi-transparent-820_1314.png'
+        allImages: Images
     }
 
-    // When this component mounts, pass loading boolean
-    componentDidMount() {
-        this.loadStuff();
-        // this.getImages();
-    }
 
-    loadStuff = props => {
-
-    };
 
     // getImages = () => {
     //     this.setState({image: 'https://img.pngio.com/yoshi-vector-transparent-background-image-free-stock-yoshi-super-yoshi-transparent-820_1314.png'})
@@ -31,9 +23,14 @@ class CardContainer extends Component {
         return (
             <Container>
                 <Row>
-                    <Col size="md-3">
-                        <Card image={this.state.image}/>
-                    </Col>
+                    {this.state.allImages.map(character => {
+                        return (
+                            <Col size="md-3">
+                                <Card characterImage={character} />
+                            </Col>
+                        )
+                    })}
+
                 </Row>
             </Container>
         );

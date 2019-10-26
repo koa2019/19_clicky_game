@@ -1,0 +1,98 @@
+[
+    {
+        "title": "card",
+        "image": "/images/marioBrothers1.png",
+        "isClicked": false
+
+    },
+    {
+        "title": "card",
+        "image": "/images/marioBrothers2a.png",
+        "isClicked": false
+
+    },
+    {
+        "title": "card",
+        "image": "/images/marioBrothers2b.png",
+        "isClicked": false
+
+    },
+    {
+        "title": "card",
+        "image": "/images/marioBrothers3.png",
+        "isClicked": false
+
+    },
+    {
+        "title": "card",
+        "image": "/images/marioBrothers4.png",
+        "isClicked": false
+
+    },
+    {
+        "title": "card",
+        "image": "/images/marioBrothers5.png",
+        "isClicked": false
+
+    },
+    {
+        "title": "card",
+        "image": "/images/marioBrothers6.png",
+        "isClicked": false
+
+    },
+    {
+        "title": "card",
+        "image": "/images/marioBrothers7.png",
+        "isClicked": false
+
+    },
+    {
+        "title": "card",
+        "image": "/images/marioBrothers8.png",
+        "isClicked": false
+
+    },
+    {
+        "title": "card",
+        "image": "/images/marioBrothers9.png",
+        "isClicked": false
+
+    },
+    {
+        "title": "card",
+        "image": "/images/marioBrothers10.png",
+        "isClicked": false
+
+    },
+    {
+        "title": "card",
+        "image": "/images/marioBrothers11.png",
+        "isClicked": false
+
+    },
+    {
+        "title": "card",
+        "image": "/images/marioBrothers12.png",
+        "isClicked": false
+
+    },
+    {
+        "title": "card",
+        "image": "/images/marioBrothers13.png",
+        "isClicked": false
+
+    },
+    {
+        "title": "card",
+        "image": "/images/marioBrothers14.png",
+        "isClicked": false
+
+    },
+    {
+        "title": "card",
+        "image": "/images/marioBrothers15.png",
+        "isClicked": false
+
+    }
+]

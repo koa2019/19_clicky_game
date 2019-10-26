@@ -50,7 +50,7 @@ class Card extends Component {
     }
 
 
-    render(props) {
+    render() {
         return (
             <div className='card-deck'>
 
@@ -66,7 +66,7 @@ class Card extends Component {
                     value={this.state.points}
                     onClick={this.handleCardClick}
                 >
-                     <img src= {Background} />
+                     <img src= {this.props.characterImage.image} />
                     <p>Current Score: {this.state.currentScore}</p>
                     <p>Card Value: {this.state.points}</p>
                     <p>Total Score: {this.state.topScore}</p>
