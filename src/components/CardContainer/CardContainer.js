@@ -16,7 +16,7 @@ class CardContainer extends Component {
         selectedChar: [],
         alreadySelected: false,
         currentScore: 0,
-        topScore: 3,
+        topScore: 0,
         points: 1,
         allImages: Images
     };
@@ -53,7 +53,7 @@ class CardContainer extends Component {
     render() {
         return (
             <div> 
-            <Nav score={this.state.currentScore} />
+            <Nav currentScore={this.state.currentScore} topScore={this.state.topScore} />
             <Header />
             <Container>
                 <Row>
