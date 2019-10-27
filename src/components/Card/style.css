@@ -1,15 +1,12 @@
 .card-body {
     max-height: 200px;
     max-width: 200px;
-    /* background-image: url('./marioBrothers7.png'); */
 }
 .card {
-  height: 200px;
-  width: 200px;
-  /* box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23); */
-  /* position: relative; */
-  /* margin: 0 auto; */
+  max-height: 200px;
+  max-width: 200px;
   margin-top: 30px;
+  background-color: rgb(49, 49, 48);
 }
 .card img {
   height: 100%;
