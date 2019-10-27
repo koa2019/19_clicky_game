@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import Container from "../Container";
 import Nav from '../Nav/Nav';
 import Header from '../Header/Header';
-
 import Row from '../Row';
 import Col from "../Col";
 import Card from '../Card/Card';
@@ -63,7 +62,7 @@ class CardContainer extends Component {
 
                         return (
                             <Col size="md-3">
-                                <Card characterImage={character.image} 
+                                <Card  characterImage={character.image} 
                                 points={this.state.points}
                                 handleCardClick={this.handleCardClick} key={character.title} />
                             </Col>
