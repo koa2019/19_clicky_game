@@ -6,11 +6,12 @@ function Card(props) {
         <div className='card-deck'>
             <div className="card"
                 data-id={props.id}
+                data-value={props.name}
                 value={props.points}
                 data-clicked={props.clicked}
                 onClick={props.handleCardClick}
             >
-                <img src={props.characterImage} alt={props.alt} />
+                <img src={props.characterImage} alt={props.name} />
             </div>
         </div>
     );

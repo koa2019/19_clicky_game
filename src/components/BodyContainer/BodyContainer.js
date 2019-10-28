@@ -11,6 +11,7 @@ import "./style.css";
 
 const maxScore = 150;
 const maxCorrect = 3;
+// const clickedImgs = [];
 
 class BodyContainer extends Component {
 
@@ -66,39 +67,54 @@ class BodyContainer extends Component {
         this.state.allImages.shuffle();
     }
 
-    // function checks if the img user clicks on has already been clicked on 
-    // by searching for it in the clickedImgs array
-    validateSelection = currentImg => {
-
-        let clickedImgs = [];
-        // for (character of selectedImages) {
-        //     if(selectedId == i) {
-        clickedImgs.filter(currentImg)
-        if (currentImg) {
-            this.renderMessage('stop')
-        }
-        else {
-            clickedImgs.push(currentImg)
-        }
+    // function checks if the img user clicks on has already been clicked on by searching for it in the clickedImgs array
+    validateClick = currentImg => {
+    //     const clickedImgs = [];
+    //     // for (character of clickedImgs) {
+    //     clickedImgs.filter(currentImg)
+    //     if (currentImg) {
+    //         this.renderMessage('stop')
+    //     }
+    //     else {
+    //         clickedImgs.push(currentImg)
+    //     }
     }
 
 
     // eventListener function to handle card user selects
     handleCardClick = event => {
-        event.preventDefault();
+        // event.preventDefault();
 
-        // Get the id of the clicked card
-        // const selectedId = event.target.attributes.getNamedItem('data-id');
-        const selectedId = event.target.attributes.value;
-        console.log(selectedId)
+        // Get the data-value of the clicked card
+        // const currentImg = event.target.attributes.getNamedItem("data-value").value;
+        const currentImg = event.target.attributes.getNamedItem("data-value");
+        console.log(currentImg)
 
-        // clone state obj. Easier way to update multiple key prop at once
+        // clone state obj. Easier way to update multiple state key props at once
         const newState = { ...this.state };
 
-        // call this function
-        // this.validateSelection(selectedId);
+        // conditional checks if the img user clicks on has already been clicked on 
+        // by searching for it in the clickedImgs array
+        // this.validateClick(clickedImgs);
+        // const clickedImgs = [];
+
+        // // for (character of clickedImgs) {
+        // clickedImgs.filter(currentImg){
+        //     if (currentImg) {
+        //         this.renderMessage('stop')
+        //     }
+        //     else {
+        //         // push this img obj into new array
+        //         clickedImgs.push(currentImg)
+        //         // set Images isClicked property to true
+        //         newState.allImages.isClicked = true;
+        //     }
+        // }
+
+        // conditional to continue playing game
         if (newState.status === 'go') {
 
+            // increament correct guesses by 1
             newState.numCorrect += 1;
 
             // set score to the sum of current score & points
@@ -111,8 +127,7 @@ class BodyContainer extends Component {
                 newState.topScore = newState.currentScore
             }
 
-            // set Images isClicked property to true
-            // newState.allImages.isClicked = true;
+
 
             // Replace our component's state with newState
             this.setState(newState);
@@ -120,7 +135,7 @@ class BodyContainer extends Component {
             this.getRandomPoints();
         }
 
-        // conditional to stop game if goer picked all 15 cards only once
+        // conditional to stop game if user picked all 15 cards only once
         if (newState.numCorrect === maxCorrect) {
             console.log('WINNER! You Guessed 15 out of 15 Correct!')
             this.renderMessage('win')
@@ -141,7 +156,7 @@ class BodyContainer extends Component {
                                     <Card
                                         id={character.id}
                                         points={this.state.points}
-                                        alt={character.title}
+                                        name={character.title}
                                         characterImage={character.image}
                                         clicked={character.isClicked}
                                         handleCardClick={this.handleCardClick} />
