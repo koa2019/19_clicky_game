@@ -11,14 +11,13 @@ import "./style.css";
 
 // const maxScore = 75;
 const maxCorrect = 15;
-let count = 0;
+let numCorrect = 0;
+let selectedImages = [];
 
 class BodyContainer extends Component {
 
     state = {
-        isWinner: false,
-        selectedChar: [],
-        alreadySelected: false,
+        status: "",
         currentScore: 0,
         topScore: 0,
         points: 1,
@@ -32,7 +31,7 @@ class BodyContainer extends Component {
         });
     }
 
-    renderCards = (Images) => {
+    renderCards = Images => {
         this.state.allImages.shuffle();
     }
 
@@ -48,31 +47,62 @@ class BodyContainer extends Component {
                 alert('Hello');
         }
     }
+    validateSelection = selectedId => {
+
+        // for (character of selectedImages) {
+        //     if(selectedId == i) {
+        selectedImages.indexOf(selectedId, 0)
+        if (selectedId) {
+            this.setState({
+                status: 'end'
+            })
+        }
+        else {
+            selectedImages.push(selectedId)
+            this.setState({
+                status: 'play'
+            })
+        }
+    }
 
     handleCardClick = event => {
 
         event.preventDefault();
         // Get the id of the clicked card
-        // const selectedId = event.target.attributes.getNamedItem('data-id').value;
+        // const selectedId = event.target.attributes.getNamedItem('data-id');
         const selectedId = event.target.attributes.value;
         console.log(selectedId)
-    
-        const newState = { ...this.state };
 
-        if(count < maxCorrect) {
-            count += 1;
+        // call this function
+        this.validateSelection(selectedId);
+
+        if (this.state.status === 'play') {
+
+            numCorrect += 1;
+
+            // clone state obj
+            const newState = { ...this.state };
+
+            // set score to the sum of current score & points
             newState.currentScore += this.state.points;
+
+            // conditional to find top score
             if (newState.currentScore > newState.topScore) {
                 newState.topScore = newState.currentScore
             }
-            // newState.allImages = this.state.allImages === true;
 
+            // set Images isClicked property to true
+            // newState.allImages.isClicked = true;
+
+           // Replace our component's state with newState
             this.setState(newState);
             // load new random points value to card
             this.getRandomPoints();
-
         }
-        else {
+
+        // conditional to end game if player picked all 15 cards only once
+        if (numCorrect === maxCorrect) {
+            this.setState({ status: 'end' })
             this.renderMessage('win')
         }
     }
@@ -101,7 +131,7 @@ class BodyContainer extends Component {
 
                     </Row>
                 </Container>
-                <Modal/>
+                <Modal />
             </div>
         );
     }
