@@ -1,0 +1,34 @@
+.container {
+  background-color: rgba(90, 95, 93, 0.781);
+  min-height: 50vh;
+
+}
+
+.nav {
+  min-height: 10vh;
+  background-color:goldenrod;
+  font-size: calc(15px + 2vmin);
+  font-weight: 450;
+  background-image: url('/images/background.jpg');
+
+}
+
+.nav a {
+  color: white;
+  font-weight: 500;
+  margin-top: 2%;
+}
+
+.jumbotron {
+  background-color: rgb(49, 49, 48);    
+}
+
+header {
+  min-height: 15vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(30px + 2vmin);
+  color: white;
+}

@@ -1,14 +1,14 @@
 import React from 'react';
 import './App.css';
 import ErrorBoundary from './components/ErrorBoundary';
-import CardContainer from './components/CardContainer/CardContainer';
+import BodyContainer from './components/BodyContainer/BodyContainer';
 
 // function App() {
 const App = () => {
   return (
     <div>
       <ErrorBoundary>
-        <CardContainer />
+        <BodyContainer />
       </ErrorBoundary>
     </div>
   );
