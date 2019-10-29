@@ -21,7 +21,6 @@ class BodyContainer extends Component {
         currentScore: 0,
         topScore: 0,
         points: 1,
-        // allImages: '',
         allImages: Images,
         message: ''
     };
@@ -33,13 +32,25 @@ class BodyContainer extends Component {
 
     loadImgObjs = () => {
         if (Images.length > 0) {
-           console.log('componentDidMount!')          
+            console.log('componentDidMount!')       
         }
         else {
             console.log('Error. JSON file empty')
         }
     }
-    
+    shuffle = arr => {
+        var i,
+            j,
+            temp;
+        for (i = arr.length - 1; i > 0; i--) {
+            j = Math.floor(Math.random() * (i + 1));
+            temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = temp;
+        }
+        return arr;
+    };
+
     resetGame = () => {
 
         // clone state obj
@@ -125,12 +136,11 @@ class BodyContainer extends Component {
                 newState.topScore = newState.currentScore
             }
 
-
-
             // Replace our component's state with newState
             this.setState(newState);
             // load new random points value to card
             this.getRandomPoints();
+            this.shuffle(this.state.allImages)
         }
 
         // conditional to stop game if user picked all 15 cards only once
