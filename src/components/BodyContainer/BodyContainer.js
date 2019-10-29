@@ -22,6 +22,7 @@ class BodyContainer extends Component {
         topScore: 0,
         points: 1,
         allImages: Images,
+        // clickedImgs: [],
         message: ''
     };
 
@@ -32,12 +33,13 @@ class BodyContainer extends Component {
 
     loadImgObjs = () => {
         if (Images.length > 0) {
-            console.log('componentDidMount!')       
+            console.log('componentDidMount!')
         }
         else {
             console.log('Error. JSON file empty')
         }
     }
+
     shuffle = arr => {
         var i,
             j,
@@ -49,10 +51,9 @@ class BodyContainer extends Component {
             arr[j] = temp;
         }
         return arr;
-    };
+    }
 
     resetGame = () => {
-
         // clone state obj
         const newState = { ...this.state };
         newState.currentScore = 0;
@@ -65,9 +66,7 @@ class BodyContainer extends Component {
 
     getRandomPoints = () => {
         const num = Math.floor(Math.random() * 10) + 1;
-        this.setState({
-            points: num
-        });
+        this.setState({ points: num });
     }
 
     renderMessage = str => {
@@ -88,8 +87,6 @@ class BodyContainer extends Component {
         }
     }
 
-
-
     // eventListener function to handle card user selects
     handleCardClick = event => {
         // event.preventDefault();
@@ -102,23 +99,27 @@ class BodyContainer extends Component {
         // clone state obj. Easier way to update multiple state key props at once
         const newState = { ...this.state };
 
-        // conditional checks if the img user clicks on has already been clicked on 
-        // by searching for it in the clickedImgs array
-        // this.validateClick(clickedImgs);
-        // const clickedImgs = [];
+        // conditional checks if the img user clicks on has already been clicked on by searching for it in the clickedImgs array
+        const clickedImgs = [];
+        clickedImgs.filter(currentImg, cb => {
 
-        // // for (character of clickedImgs) {
-        // clickedImgs.filter(currentImg){
-        //     if (currentImg) {
-        //         this.renderMessage('stop')
-        //     }
-        //     else {
-        //         // push this img obj into new array
-        //         clickedImgs.push(currentImg)
-        //         // set Images isClicked property to true
-        //         newState.allImages.isClicked = true;
-        //     }
-        // }
+        // newState.clickedImgs.filter(currentImg, cb => {
+
+            if (currentImg) {
+            // if (newState.clickedImgs) {
+                this.renderMessage('stop')
+            }
+            else {
+                // push this img obj into new array & set Images isClicked property to true
+                clickedImgs.push(currentImg)
+                // newState.clickedImgs.push(currentImg)
+                //  newState.allImages.isClicked = true;
+                this.state.allImages.isClicked = true;
+            }
+        })
+
+
+
 
         // conditional to continue playing game
         if (newState.status === 'go') {
@@ -127,18 +128,15 @@ class BodyContainer extends Component {
             newState.numCorrect += 1;
 
             // set score to the sum of current score & points
-            // this.getCurrentScore()
             newState.currentScore += this.state.points;
 
             // conditional to find top score
-            // this.getTopScore()
             if (newState.currentScore > newState.topScore) {
                 newState.topScore = newState.currentScore
             }
 
-            // Replace our component's state with newState
+            // Replace our component's state with newState, load random points & shuffle imgs
             this.setState(newState);
-            // load new random points value to card
             this.getRandomPoints();
             this.shuffle(this.state.allImages)
         }
@@ -159,7 +157,6 @@ class BodyContainer extends Component {
                     <Row>
                         {/* loop through allImages arry & callbk function returns each card */}
                         {this.state.allImages.map((character, i) => {
-
                             return (
                                 <Col size="md-3" key={character.title}>
                                     <Card
