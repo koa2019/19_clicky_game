@@ -15,8 +15,8 @@ const maxCorrect = 3;
 class BodyContainer extends Component {
 
     state = {
-        // status: 'go',
         numCorrect: 0,
+        isSelected: false,
         currentScore: 0,
         topScore: 0,
         points: 1,
@@ -45,12 +45,11 @@ class BodyContainer extends Component {
     }
 
     resetGame = () => {
-        // clone state obj
         this.setState({
             currentScore: 0,
-            // status: 'go',
             numCorrect: 0,
-            clickedImgs:[]
+            clickedImgs: [],
+
         })
         this.getRandomPoints();
     }
@@ -64,71 +63,68 @@ class BodyContainer extends Component {
         switch (str) {
             case 'win':
                 this.setState({ message: 'WINNER! You Guessed 15 out of 15 Correct!' })
-                // this.setState({ status: 'stop' })
                 this.resetGame()
                 break;
             case 'stop':
                 this.setState({ message: 'GAME OVER. You Guessed Wrong' })
-                // this.setState({ status: 'stop' })
                 this.resetGame()
                 break;
             default:
                 this.setState({ message: 'Hello' })
-                // this.setState({ status: 'go' })
         }
     }
 
     // eventListener function to handle card user selects
-    handleCardClick = props => {
+    handleCardClick = event => {
 
         // Get the data-value of the clicked card
         // const currentImg = event.target.attributes.getNamedItem("data-value").value;
-        // const currentImg = event.target.attributes.getNamedItem("data-value");
-        let currentImg = this.props;
+        const currentImg = event.target.attributes.getNamedItem("data-clicked");
+        // let currentImg = this.props;
         console.log(currentImg)
 
         // clone state obj. Easier way to update multiple state key props at once
         const newState = { ...this.state };
 
-        // conditional checks if the img user clicks on has already been clicked on by searching for it in the clickedImgs array
-        // clickedImgs.filter(currentImg, cb => {
-
-        // // newState.clickedImgs.filter(currentImg, cb => {
-
-        //     if (currentImg) {
-        //     // if (newState.clickedImgs) {
-        //         this.renderMessage('stop')
-        //     }
-        //     else {
-        //         // push this img obj into new array & set Images isClicked property to true
-        //         clickedImgs.push(currentImg)
-        //         // newState.clickedImgs.push(currentImg)
-        //         //  newState.allImages.isClicked = true;
-                    // this.setState({isClicked: true})
-        //         this.state.allImages.isClicked = true;
-        //     }
-        // })
-
         // conditional to continue playing game
-        // if (newState.status === 'go') {
-        if(newState.allImages.isClicked === 0) { 
+        console.log(newState.allImages.isClicked)
+        // if(currentImg === false) {
+        if (newState.isSelected === false) {
 
-            // increament correct guesses by 1
-            newState.numCorrect += 1;
+            // push this img obj into new array & set Images isClicked property to true
+            newState.clickedImgs.push(this.currentImg)
+            newState.isSelected = true;
 
-            // set score to the sum of current score & points
-            newState.currentScore += this.state.points;
-
-            // conditional to find top score
-            if (newState.currentScore > newState.topScore) {
-                newState.topScore = newState.currentScore
-            }
-
-            // Replace our component's state with newState, load random points & shuffle imgs
-            this.setState(newState);
-            this.getRandomPoints();
-            this.shuffle(this.state.allImages)
         }
+        else {
+            this.renderMessage('stop')
+        }
+
+        // increament correct guesses by 1
+        newState.numCorrect += 1;
+
+        // set score to the sum of current score & points
+        newState.currentScore += this.state.points;
+
+        // conditional to find top score
+        if (newState.currentScore > newState.topScore) {
+            newState.topScore = newState.currentScore
+        }
+        // code if i used this.state. instead of newState.
+        // console.log(this.state.allImages.isClicked)
+        // this.setState({clickedImgs: currentImg})
+        // this.setState({isClicked: true})
+        // this.setState({currentScore: this.state.currentScore + this.state.points})
+        // this.setState({numCorrect: this.state.numCorrect += 1})
+        // if (this.state.currentScore > this.state.topScore) {
+        //     this.setState({topScore: this.state.currentScore})
+        // }
+
+        // Replace our component's state with newState, load random points & shuffle imgs
+        this.setState(newState);
+        this.getRandomPoints();
+        this.shuffle(this.state.allImages)
+
 
         // conditional to stop game if user picked all 15 cards only once
         if (newState.numCorrect === maxCorrect || newState.currentScore === maxScore) {
@@ -153,7 +149,7 @@ class BodyContainer extends Component {
                                         points={this.state.points}
                                         name={character.title}
                                         characterImage={character.image}
-                                        clicked={character.isClicked}
+                                        clicked={this.state.isSelected}
                                         handleCardClick={this.handleCardClick} />
                                 </Col>
                             );
