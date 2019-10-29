@@ -100,26 +100,23 @@ class BodyContainer extends Component {
         const newState = { ...this.state };
 
         // conditional checks if the img user clicks on has already been clicked on by searching for it in the clickedImgs array
-        const clickedImgs = [];
-        clickedImgs.filter(currentImg, cb => {
+        // const clickedImgs = [];
+        // clickedImgs.filter(currentImg, cb => {
 
-        // newState.clickedImgs.filter(currentImg, cb => {
+        // // newState.clickedImgs.filter(currentImg, cb => {
 
-            if (currentImg) {
-            // if (newState.clickedImgs) {
-                this.renderMessage('stop')
-            }
-            else {
-                // push this img obj into new array & set Images isClicked property to true
-                clickedImgs.push(currentImg)
-                // newState.clickedImgs.push(currentImg)
-                //  newState.allImages.isClicked = true;
-                this.state.allImages.isClicked = true;
-            }
-        })
-
-
-
+        //     if (currentImg) {
+        //     // if (newState.clickedImgs) {
+        //         this.renderMessage('stop')
+        //     }
+        //     else {
+        //         // push this img obj into new array & set Images isClicked property to true
+        //         clickedImgs.push(currentImg)
+        //         // newState.clickedImgs.push(currentImg)
+        //         //  newState.allImages.isClicked = true;
+        //         this.state.allImages.isClicked = true;
+        //     }
+        // })
 
         // conditional to continue playing game
         if (newState.status === 'go') {
