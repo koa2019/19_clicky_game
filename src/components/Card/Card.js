@@ -9,7 +9,7 @@ function Card(props) {
                 data-value={props.name}
                 value={props.points}
                 data-clicked={props.clicked}
-                onClick={props.handleCardClick}
+                onClick={() =>props.handleCardClick(props.name)}
             >
                 <img src={props.characterImage} alt={props.name} />
             </div>
