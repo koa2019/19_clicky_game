@@ -21,10 +21,25 @@ class BodyContainer extends Component {
         currentScore: 0,
         topScore: 0,
         points: 1,
+        // allImages: '',
         allImages: Images,
         message: ''
     };
 
+    // When the component mounts, load the next dog to be displayed
+    componentDidMount() {
+        this.loadImgObjs();
+    }
+
+    loadImgObjs = () => {
+        if (Images.length > 0) {
+           console.log('componentDidMount!')          
+        }
+        else {
+            console.log('Error. JSON file empty')
+        }
+    }
+    
     resetGame = () => {
 
         // clone state obj
@@ -62,23 +77,6 @@ class BodyContainer extends Component {
         }
     }
 
-    // function to render images in random order
-    renderCards = Images => {
-        this.state.allImages.shuffle();
-    }
-
-    // function checks if the img user clicks on has already been clicked on by searching for it in the clickedImgs array
-    validateClick = currentImg => {
-    //     const clickedImgs = [];
-    //     // for (character of clickedImgs) {
-    //     clickedImgs.filter(currentImg)
-    //     if (currentImg) {
-    //         this.renderMessage('stop')
-    //     }
-    //     else {
-    //         clickedImgs.push(currentImg)
-    //     }
-    }
 
 
     // eventListener function to handle card user selects
@@ -136,7 +134,7 @@ class BodyContainer extends Component {
         }
 
         // conditional to stop game if user picked all 15 cards only once
-        if (newState.numCorrect === maxCorrect) {
+        if (newState.numCorrect === maxCorrect || newState.currentScore === maxScore) {
             console.log('WINNER! You Guessed 15 out of 15 Correct!')
             this.renderMessage('win')
         }
@@ -149,6 +147,7 @@ class BodyContainer extends Component {
                 <Header />
                 <Container>
                     <Row>
+                        {/* loop through allImages arry & callbk function returns each card */}
                         {this.state.allImages.map((character, i) => {
 
                             return (
@@ -163,7 +162,6 @@ class BodyContainer extends Component {
                                 </Col>
                             );
                         })}
-
                     </Row>
                 </Container>
                 <Modal>
