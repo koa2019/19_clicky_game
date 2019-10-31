@@ -26,18 +26,11 @@ class BodyContainer extends Component {
     };
 
     // When the component mounts, load the next dog to be displayed
-    componentDidMount() {
-        // console.log('imgs json', Images[1])
-        this.loadImgObjs();
-    }
+    componentDidMount = () => this.loadImgObjs()
 
     loadImgObjs = () => {
-        if (Images.length > 0) {
-            console.log('componentDidMount!')
-        }
-        else {
-            console.log('Error. JSON file empty')
-        }
+        if (Images.length > 0) { console.log('componentDidMount!')}
+        else {console.log('Error. JSON file empty')}
     }
 
     shuffle = arr => {
@@ -88,26 +81,28 @@ class BodyContainer extends Component {
         const newState = { ...this.state };
 
         // conditional to continue playing game
-        if (newState.isSelected) {
+        // if (newState.isSelected) {
+        if (newState.clickedImgs.includes(target)) {
+
             this.renderMessage('stop')
             alert('stop')
         }
 
-        // if (newState.isSelected === false) {
-        if(!Images.isClicked) { 
-            // push this img obj into new array & set Images isClicked property to true
+        // if (!newState.isSelected) {
+        // if(!Images.isClicked) { 
+        else {
+
+            // push target value into array & set Images isClicked property to true
             newState.clickedImgs.push(target)
             console.log(newState.clickedImgs)
-            newState.isSelected = true;
+            // newState.isSelected = true;
 
+            // increament correct guesses by 1
+            newState.numCorrect += 1;
+
+            // set score to the sum of current score & points
+            newState.currentScore += this.state.points;
         }
-
-        // increament correct guesses by 1
-        newState.numCorrect += 1;
-
-        // set score to the sum of current score & points
-        newState.currentScore += this.state.points;
-
         // conditional to find top score
         if (newState.currentScore > newState.topScore) {
             newState.topScore = newState.currentScore
@@ -142,7 +137,7 @@ class BodyContainer extends Component {
                                         points={this.state.points}
                                         name={character.title}
                                         characterImage={character.image}
-                                        clicked={this.state.isSelected}
+                                        // clicked={this.state.isSelected}
                                         handleCardClick={this.handleCardClick} />
                                 </Col>
                             );
