@@ -11,7 +11,7 @@ function Modal(props) {
             </button>
           </div>
           <div className="modal-body">
-            <h5>{props.children}</h5>
+            <h5>{props.children} </h5>
           </div>
           <div className="modal-footer">
             <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
