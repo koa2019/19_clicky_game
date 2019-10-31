@@ -29,8 +29,12 @@ class BodyContainer extends Component {
     componentDidMount = () => this.loadImgObjs()
 
     loadImgObjs = () => {
-        if (Images.length > 0) { console.log('componentDidMount!')}
-        else {console.log('Error. JSON file empty')}
+        if (Images.length > 0) { 
+            console.log('componentDidMount!') 
+        }
+        else { 
+            console.log('Error. JSON file empty') 
+        }
     }
 
     shuffle = arr => {
@@ -44,7 +48,6 @@ class BodyContainer extends Component {
             numCorrect: 0,
             clickedImgs: [],
             isSelected: false
-
         })
         this.getRandomPoints();
     }
@@ -58,11 +61,11 @@ class BodyContainer extends Component {
         switch (str) {
             case 'win':
                 this.setState({ message: 'WINNER! You Guessed 15 out of 15 Correct!' })
-                this.resetGame()
                 break;
             case 'stop':
-                this.setState({ message: 'GAME OVER. You Guessed Wrong' })
-                this.resetGame()
+                // this.setState({ message: 'GAME OVER. You Guessed Wrong' })
+                // alert(this.state.message)
+                alert('GAME OVER. You Guessed Wrong')
                 break;
             default:
                 this.setState({ message: 'Hello' })
@@ -83,9 +86,8 @@ class BodyContainer extends Component {
         // conditional to continue playing game
         // if (newState.isSelected) {
         if (newState.clickedImgs.includes(target)) {
-
             this.renderMessage('stop')
-            alert('stop')
+            this.resetGame()
         }
 
         // if (!newState.isSelected) {
@@ -118,6 +120,7 @@ class BodyContainer extends Component {
         if (newState.numCorrect === maxCorrect || newState.currentScore === maxScore) {
             // console.log('WINNER! You Guessed 15 out of 15 Correct!')
             this.renderMessage('win')
+            this.resetGame()
         }
     }
 
