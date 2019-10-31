@@ -10,7 +10,7 @@ import Images from '../../components/images.json';
 import "./style.css";
 
 const maxScore = 150;
-const maxCorrect = 3;
+const maxCorrect = 15;
 
 class BodyContainer extends Component {
 
@@ -27,6 +27,7 @@ class BodyContainer extends Component {
 
     // When the component mounts, load the next dog to be displayed
     componentDidMount() {
+        // console.log('imgs json', Images[1])
         this.loadImgObjs();
     }
 
@@ -78,16 +79,13 @@ class BodyContainer extends Component {
     handleCardClick = event => {
 
         // Get the data-value of the clicked card
-        // const currentImg = event.target.attributes.getNamedItem("data-value").value;
-        const currentImg = event.target.attributes.getNamedItem("data-clicked");
-        // let currentImg = this.props;
+        const currentImg = event.target.parentNode.attributes.getNamedItem("data-clicked").value;
         console.log(currentImg)
 
         // clone state obj. Easier way to update multiple state key props at once
         const newState = { ...this.state };
 
         // conditional to continue playing game
-        console.log(newState.allImages.isClicked)
         // if(currentImg === false) {
         if (newState.isSelected === false) {
 
