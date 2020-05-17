@@ -2,9 +2,9 @@
 
 Run npm install
 
-npm start to initiate game
+`npm start` to initiate game
 
-Test your memory! Click each image once to accumulate the most points.
+Test your memory! Click each image only once to accumulate the most points.
 
 Click an image twice & GAME OVER!
 
